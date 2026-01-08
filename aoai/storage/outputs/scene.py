@@ -2,34 +2,60 @@ from manim import *
 
 class GeneratedScene(Scene):
     def construct(self):
-        # Scene 1: Introduction
-        text1 = Text("Introduction to Circle", font_size=36)
-        self.play(Write(text1))
-        self.wait()
-        self.play(FadeOut(text1))
-        
-        # Scene 2: Defining Radius
-        text2 = Text("Defining Radius", font_size=36).to_edge(UP)
-        center_dot = Dot(ORIGIN, color=RED)
-        radius_line = Line(ORIGIN, RIGHT * 2, color=YELLOW)
-        radius_label = Text("r", font_size=24, color=YELLOW).next_to(radius_line, DOWN)
-        
-        self.play(Write(text2))
-        self.play(Create(center_dot))
-        self.play(Create(radius_line), Write(radius_label))
+        # Introduction to Derivatives
+        axes = Axes().to_edge(UP)
+        self.play(Create(axes))
         self.wait()
         
-        # Scene 3: Drawing the Circle
-        text3 = Text("Drawing the Circle", font_size=36).to_edge(UP)
-        circle = Circle(radius=2, color=BLUE)
-        
-        self.play(Transform(text2, text3))
-        self.play(Create(circle))
+        func_graph = axes.plot(lambda x: x**2, x_range=[-10, 10], color=BLUE)
+        self.play(Create(func_graph))
         self.wait()
         
-        # Final view with all elements
-        self.play(
-            radius_line.animate.rotate(PI/4),
-            radius_label.animate.move_to(radius_line.get_center() + UP * 0.3)
-        )
-        self.wait(2)
+        tangent_line = axes.get_tangent_line(func_graph, 2)
+        self.play(Create(tangent_line))
+        self.wait()
+        
+        intro_text = Text("Introduction to Derivatives", font_size=36).to_edge(UP)
+        self.play(Write(intro_text))
+        self.wait()
+        
+        self.play(FadeOut(intro_text))
+        self.wait()
+        
+        # Visualizing Derivative as Slope
+        text_obj = Text("Derivative as Slope", font_size=36).to_edge(UP)
+        self.play(Write(text_obj))
+        self.wait()
+        
+        arrow = Arrow(LEFT, RIGHT, color=YELLOW).next_to(text_obj, DOWN)
+        self.play(Create(arrow))
+        self.wait()
+        
+        tangent_line_2 = axes.get_tangent_line(func_graph, 3)
+        self.play(Create(tangent_line_2))
+        self.wait()
+        
+        self.play(Transform(tangent_line_2, tangent_line))
+        self.wait()
+        
+        self.play(FadeOut(text_obj), FadeOut(arrow), FadeOut(tangent_line_2))
+        self.wait()
+        
+        # Calculating Derivative
+        secant_line = Line(axes.coords_to_point(-5, 0), axes.coords_to_point(5, 0), color=RED)
+        self.play(Create(secant_line))
+        self.wait()
+        
+        dot = Dot(axes.coords_to_point(0, 0), color=GREEN)
+        self.play(Create(dot))
+        self.wait()
+        
+        func_graph_2 = axes.plot(lambda x: x**2, x_range=[-10, 10], color=BLUE)
+        self.play(Create(func_graph_2))
+        self.wait()
+        
+        self.play(Transform(secant_line, tangent_line))
+        self.wait()
+        
+        self.play(FadeOut(secant_line), FadeOut(dot), FadeOut(func_graph_2))
+        self.wait()

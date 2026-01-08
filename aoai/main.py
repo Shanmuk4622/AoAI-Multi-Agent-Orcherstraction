@@ -20,6 +20,7 @@ from agents.logician_agent import LogicianAgent
 from agents.director_agent import DirectorAgent
 from agents.engineer_agent import EngineerAgent
 from agents.fixer_agent import FixerAgent
+from agents.narrator_agent import NarratorAgent
 
 # Import pipeline
 from pipeline.orchestrator import Orchestrator
@@ -84,6 +85,7 @@ def main():
         director = DirectorAgent(groq_client)
         engineer = EngineerAgent(groq_client)  # Using Groq instead of Gemini
         fixer = FixerAgent(groq_client)
+        narrator = NarratorAgent(groq_client)
         
         # Initialize pipeline components
         print("\n⚙️  Initializing pipeline...")
@@ -97,7 +99,8 @@ def main():
                 'logician': logician,
                 'director': director,
                 'engineer': engineer,
-                'fixer': fixer
+                'fixer': fixer,
+                'narrator': narrator
             },
             storage_path=storage_path,
             sandbox=sandbox,

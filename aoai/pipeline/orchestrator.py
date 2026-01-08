@@ -30,6 +30,7 @@ class Orchestrator:
         self.director = agents['director']
         self.engineer = agents['engineer']
         self.fixer = agents['fixer']
+        self.narrator = agents.get('narrator')  # Optional narrator agent
         self.sandbox = sandbox
         self.retry_manager = retry_manager
         

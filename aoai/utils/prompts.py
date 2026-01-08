@@ -109,13 +109,47 @@ Rules:
 - No explanations, just the fixed code
 """
 
+NARRATOR_PROMPT = """You are an educational voiceover script writer. Create engaging narration for a math animation.
+
+Mathematical Concept:
+{reasoning}
+
+Animation Scenes:
+{scene_manifest}
+
+Generate a narration script in this JSON format:
+{{
+  "narrations": [
+    {{
+      "scene_index": 0,
+      "text": "Welcome! Today we'll explore...",
+      "duration": 4
+    }},
+    {{
+      "scene_index": 1,
+      "text": "Let's start by understanding...",
+      "duration": 5
+    }}
+  ]
+}}
+
+Rules:
+- Create one narration per scene (match scene_index to scenes array)
+- Keep narrations conversational and educational
+- Each narration should be 2-6 seconds of speech (15-60 words)
+- Use simple, clear language
+- Build excitement and curiosity
+- Duration should match the complexity of the scene
+- Return ONLY valid JSON, no markdown code blocks
+"""
+
 
 def get_prompt(agent_name: str, **kwargs) -> str:
     """
     Get formatted prompt for specified agent.
     
     Args:
-        agent_name: 'logician', 'director', 'engineer', or 'fixer'
+        agent_name: 'logician', 'director', 'engineer', 'fixer', or 'narrator'
         **kwargs: Variables to inject into template
         
     Returns:
@@ -125,7 +159,8 @@ def get_prompt(agent_name: str, **kwargs) -> str:
         'logician': LOGICIAN_PROMPT,
         'director': DIRECTOR_PROMPT,
         'engineer': ENGINEER_PROMPT,
-        'fixer': FIXER_PROMPT
+        'fixer': FIXER_PROMPT,
+        'narrator': NARRATOR_PROMPT
     }
     
     template = prompts.get(agent_name)
