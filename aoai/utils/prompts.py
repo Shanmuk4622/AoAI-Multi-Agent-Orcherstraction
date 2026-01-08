@@ -52,44 +52,85 @@ Rules:
 - Each scene needs at least 1 object and 1 animation
 """
 
-ENGINEER_PROMPT = """You are a Manim code generation expert. Convert scene manifest into executable Python code.
+ENGINEER_PROMPT = """You are an expert Manim CE (Community Edition) code generator specializing in mathematical animations.
 
 Scene Manifest:
 {scene_manifest}
 
-Generate a complete, executable Manim CE script following this structure:
-
+**MANDATORY TEMPLATE** - Copy this EXACTLY:
 ```python
 from manim import *
 
 class GeneratedScene(Scene):
     def construct(self):
-        # Your code here
-        pass
+        # Implementation here
 ```
 
-Rules:
-- Use Manim Community Edition (CE) syntax only
-- Import: `from manim import *`
-- Class name MUST be "GeneratedScene"
-- Include self.wait() between animations
-- No external dependencies
-- Code must be complete and runnable
-- Return ONLY the Python code, no explanations
+⚠️ **CLASS NAME MUST BE EXACTLY "GeneratedScene"** - DO NOT change this name!
 
-CRITICAL - Valid Manim Animations:
-- Use Create() for objects (NOT ShowCreation or DrawCircle)
-- Use Write() for text
-- Use FadeIn(), FadeOut() for fading
-- Use Transform() to morph objects
-- Use .animate for property changes (e.g., obj.animate.shift(UP))
+**CRITICAL SYNTAX RULES** (Manim CE v0.19+):
 
-CRITICAL - Proper Object Creation:
-- Text objects: Text("content", font_size=36)
-- Circles: Circle(radius=2, color=BLUE)
-- Lines: Line(start_point, end_point, color=YELLOW)
-- Dots: Dot(position, color=RED)
-- Use positioning: .to_edge(UP), .next_to(obj, DOWN), .move_to(point)
+✅ **Valid Animations:**
+- Create(object) - for all shapes, lines, graphs
+- Write(text) - for text objects  
+- FadeIn(obj), FadeOut(obj) - visibility
+- Transform(obj1, obj2) - morphing
+- obj.animate.shift(UP) - smooth movements
+
+❌ **NEVER USE (Deprecated):**
+- ShowCreation() - use Create() instead
+- DrawCircle() - use Create(Circle()) instead
+- DrawBorderThenFill() - use Create() instead
+
+**PROPER OBJECT CREATION:**
+```python
+# Text (NO LaTeX unless mathematical formulas)
+title = Text("Hello World", font_size=48, color=BLUE)
+subtitle = Text("Smaller text", font_size=32)
+
+# Shapes with full parameters
+circle = Circle(radius=2, color=RED, fill_opacity=0.5)
+square = Square(side_length=1.5, color=GREEN)
+line = Line(start=LEFT*2, end=RIGHT*2, color=YELLOW)
+
+# Positioning (ALWAYS use these methods)
+title.to_edge(UP)                    # Screen edges
+subtitle.next_to(title, DOWN)        # Relative to another object
+circle.move_to([1, 0, 0])           # Absolute position
+square.shift(DOWN*2)                 # Relative shift
+
+# Mathematical graphs
+axes = Axes(x_range=[-5, 5, 1], y_range=[-3, 3, 1])
+parabola = axes.plot(lambda x: x**2, x_range=[-3, 3], color=BLUE)
+```
+
+**ANIMATION PATTERNS:**
+```python
+# Sequential
+self.play(FadeIn(obj1))
+self.wait()
+self.play(Create(obj2))
+
+# Parallel (faster, better)
+self.play(FadeIn(obj1), Create(obj2))
+self.wait(2)
+
+# Smooth transitions
+self.play(obj.animate.shift(UP*2), run_time=2)
+```
+
+**QUALITY REQUIREMENTS:**
+1. Every scene should have clear intro/outro
+2. Use FadeOut to clean up before new scenes
+3. Proper pacing: self.wait(1-3) between major actions
+4. Meaningful variable names
+5. No placeholder code or TODOs
+6. Complete, tested logic
+
+**OUTPUT FORMAT:**
+Return ONLY the Python code. No markdown blocks, no explanations, no comments about what to add.
+
+Generate the complete Manim script now:
 """
 
 FIXER_PROMPT = """You are a Manim debugging expert. Fix the broken code based on the error log.

@@ -1,61 +1,77 @@
 from manim import *
 
+class IntroductionToLimits(Scene):
+    def construct(self):
+        title = Text("Introduction to Limits", font_size=48, color=BLUE)
+        title.to_edge(UP)
+        self.play(FadeIn(title))
+        self.wait()
+
+        graph = Graph()
+        function_curve = FunctionCurve(lambda x: x**2, x_range=[-3, 3], color=BLUE)
+        self.play(Create(graph), Create(function_curve))
+        self.wait(2)
+
+        text = Text("As x approaches a certain value, the function approaches a limit.", font_size=32)
+        text.next_to(title, DOWN)
+        self.play(Write(text))
+        self.wait(2)
+
+        self.play(FadeOut(title), FadeOut(text), FadeOut(graph), FadeOut(function_curve))
+        self.wait()
+
+class VisualizingContinuity(Scene):
+    def construct(self):
+        continuous_curve = ContinuousCurve(lambda x: x**2, x_range=[-3, 3], color=BLUE)
+        self.play(Create(continuous_curve))
+        self.wait(2)
+
+        pencil = Pencil()
+        pencil.next_to(continuous_curve, UP)
+        self.play(Create(pencil))
+        self.wait()
+
+        gap_in_graph = GapInGraph()
+        gap_in_graph.next_to(continuous_curve, DOWN)
+        self.play(Create(gap_in_graph))
+        self.wait(2)
+
+        self.play(FadeOut(pencil), FadeOut(gap_in_graph), FadeOut(continuous_curve))
+        self.wait()
+
+class ContinuityAtAPoint(Scene):
+    def construct(self):
+        point_on_graph = PointOnGraph()
+        point_on_graph.to_edge(UP)
+        self.play(Create(point_on_graph))
+        self.wait()
+
+        limit_value = LimitValue()
+        limit_value.next_to(point_on_graph, DOWN)
+        self.play(Create(limit_value))
+        self.wait()
+
+        function_value = FunctionValue()
+        function_value.next_to(limit_value, DOWN)
+        self.play(Create(function_value))
+        self.wait(2)
+
+        self.play(FadeOut(point_on_graph), FadeOut(limit_value), FadeOut(function_value))
+        self.wait()
+
 class GeneratedScene(Scene):
     def construct(self):
-        # Introduction to Derivatives
-        axes = Axes().to_edge(UP)
-        self.play(Create(axes))
+        self.play(FadeIn(IntroductionToLimits()))
+        self.wait(5)
+        self.play(FadeOut(IntroductionToLimits()))
         self.wait()
-        
-        func_graph = axes.plot(lambda x: x**2, x_range=[-10, 10], color=BLUE)
-        self.play(Create(func_graph))
+
+        self.play(FadeIn(VisualizingContinuity()))
+        self.wait(5)
+        self.play(FadeOut(VisualizingContinuity()))
         self.wait()
-        
-        tangent_line = axes.get_tangent_line(func_graph, 2)
-        self.play(Create(tangent_line))
-        self.wait()
-        
-        intro_text = Text("Introduction to Derivatives", font_size=36).to_edge(UP)
-        self.play(Write(intro_text))
-        self.wait()
-        
-        self.play(FadeOut(intro_text))
-        self.wait()
-        
-        # Visualizing Derivative as Slope
-        text_obj = Text("Derivative as Slope", font_size=36).to_edge(UP)
-        self.play(Write(text_obj))
-        self.wait()
-        
-        arrow = Arrow(LEFT, RIGHT, color=YELLOW).next_to(text_obj, DOWN)
-        self.play(Create(arrow))
-        self.wait()
-        
-        tangent_line_2 = axes.get_tangent_line(func_graph, 3)
-        self.play(Create(tangent_line_2))
-        self.wait()
-        
-        self.play(Transform(tangent_line_2, tangent_line))
-        self.wait()
-        
-        self.play(FadeOut(text_obj), FadeOut(arrow), FadeOut(tangent_line_2))
-        self.wait()
-        
-        # Calculating Derivative
-        secant_line = Line(axes.coords_to_point(-5, 0), axes.coords_to_point(5, 0), color=RED)
-        self.play(Create(secant_line))
-        self.wait()
-        
-        dot = Dot(axes.coords_to_point(0, 0), color=GREEN)
-        self.play(Create(dot))
-        self.wait()
-        
-        func_graph_2 = axes.plot(lambda x: x**2, x_range=[-10, 10], color=BLUE)
-        self.play(Create(func_graph_2))
-        self.wait()
-        
-        self.play(Transform(secant_line, tangent_line))
-        self.wait()
-        
-        self.play(FadeOut(secant_line), FadeOut(dot), FadeOut(func_graph_2))
+
+        self.play(FadeIn(ContinuityAtAPoint()))
+        self.wait(5)
+        self.play(FadeOut(ContinuityAtAPoint()))
         self.wait()

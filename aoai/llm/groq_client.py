@@ -11,25 +11,41 @@ from groq import Groq
 class GroqClient:
     """Wrapper for Groq API with automatic model fallback"""
     
-    # Preferred models in order of priority
-    MODELS = [
-        "llama-3.3-70b-versatile",
+    # Model presets for different tasks
+    REASONING_MODELS = [
+        "llama-3.3-70b-versatile",  # Best for reasoning and planning
         "llama-3.1-70b-versatile",
         "mixtral-8x7b-32768"
     ]
     
+    CODE_MODELS = [
+        "llama-3.3-70b-versatile",  # Best available for code on Groq
+        "llama-3.1-70b-versatile",
+        "mixtral-8x7b-32768"
+    ]
+    
+    # Default models list
+    MODELS = REASONING_MODELS
+    
     MAX_RETRIES = 3
     RETRY_DELAY = 2  # seconds
     
-    def __init__(self, api_key: Optional[str] = None):
+    def __init__(self, api_key: Optional[str] = None, model_type: str = "reasoning"):
         self.api_key = api_key or os.getenv("GROQ_API_KEY")
         if not self.api_key:
             raise ValueError("❌ GROQ_API_KEY not found in environment")
         
         # Initialize Groq client
         self.client = Groq(api_key=self.api_key)
+        
+        # Select model list based on task type
+        if model_type == "code":
+            self.MODELS = self.CODE_MODELS
+        else:
+            self.MODELS = self.REASONING_MODELS
+            
         self.current_model = self.MODELS[0]
-        print(f"✓ Groq Client initialized (model: {self.current_model})")
+        print(f"✓ Groq Client initialized ({model_type} mode, model: {self.current_model})")
     
     def generate(self, prompt: str, max_tokens: int = 2048, temperature: float = 0.7) -> str:
         """

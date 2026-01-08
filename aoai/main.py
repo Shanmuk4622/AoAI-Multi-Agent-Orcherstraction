@@ -76,16 +76,17 @@ def main():
         
         # Initialize LLM clients
         print("📡 Initializing API clients...")
-        groq_client = GroqClient()
+        groq_reasoning = GroqClient(model_type="reasoning")
+        groq_code = GroqClient(model_type="code")
         gemini_client = GeminiClient()
         
-        # Initialize agents (using Groq for all due to Gemini compatibility issues)
+        # Initialize agents with optimized models
         print("\n🤖 Initializing agents...")
-        logician = LogicianAgent(groq_client)
-        director = DirectorAgent(groq_client)
-        engineer = EngineerAgent(groq_client)  # Using Groq instead of Gemini
-        fixer = FixerAgent(groq_client)
-        narrator = NarratorAgent(groq_client)
+        logician = LogicianAgent(groq_reasoning)  # Reasoning model for math logic
+        director = DirectorAgent(groq_reasoning)  # Reasoning model for scene planning
+        engineer = EngineerAgent(groq_code)      # Code model for Manim generation
+        fixer = FixerAgent(groq_code)            # Code model for debugging
+        narrator = NarratorAgent(groq_reasoning) # Reasoning model for storytelling
         
         # Initialize pipeline components
         print("\n⚙️  Initializing pipeline...")
