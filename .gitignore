@@ -1,0 +1,41 @@
+# Environment variables with secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Manim outputs
+media/
+*.mp4
+*.png
+*.gif
+
+# Logs
+*.log
+aoai/storage/logs/
+aoai/storage/temp/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
