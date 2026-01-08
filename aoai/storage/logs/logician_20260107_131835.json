@@ -1,0 +1,8 @@
+{
+  "concept": "Derivatives",
+  "steps": [
+    "Imagine a curve on a graph, and picture a point moving along this curve, with the derivative representing the rate of change of the curve at that point.",
+    "Visualize a tangent line to the curve at the point, which just touches the curve without crossing it, and understand that the slope of this tangent line is the derivative.",
+    "As the point moves along the curve, the slope of the tangent line changes, and the derivative at each point gives the instantaneous rate of change of the curve at that point."
+  ]
+}

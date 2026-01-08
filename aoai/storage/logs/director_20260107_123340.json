@@ -1,0 +1,53 @@
+{
+  "scenes": [
+    {
+      "title": "Introduction to Derivatives",
+      "objects": [
+        "Graph",
+        "Curve",
+        "MovingPoint"
+      ],
+      "animations": [
+        "FadeIn",
+        "Write"
+      ]
+    },
+    {
+      "title": "Visualizing the Derivative",
+      "objects": [
+        "TangentLine",
+        "SlopeIndicator",
+        "Text"
+      ],
+      "animations": [
+        "Create",
+        "ShowCreation",
+        "Transform"
+      ]
+    },
+    {
+      "title": "Derivative as a Function",
+      "objects": [
+        "Axes",
+        "DerivativeGraph",
+        "MovingPoint"
+      ],
+      "animations": [
+        "FadeIn",
+        "Write",
+        "Transform"
+      ]
+    },
+    {
+      "title": "Conclusion",
+      "objects": [
+        "Text",
+        "Equation"
+      ],
+      "animations": [
+        "FadeIn",
+        "Write"
+      ]
+    }
+  ]
+}

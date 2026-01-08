@@ -1,0 +1,8 @@
+{
+  "concept": "Derivative",
+  "steps": [
+    "Imagine a curve on a graph, where each point represents the relationship between two variables, and think of the derivative as a measure of how steep this curve is at any given point.",
+    "To visualize this, consider a tangent line that just touches the curve at a single point, representing the instantaneous rate of change at that point.",
+    "The derivative is then the slope of this tangent line, which can be thought of as the rate at which one variable changes when the other variable changes by a very small amount."
+  ]
+}

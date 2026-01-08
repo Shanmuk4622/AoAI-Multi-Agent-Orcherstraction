@@ -1,0 +1,43 @@
+{
+  "scenes": [
+    {
+      "title": "Introduction to Derivatives",
+      "objects": [
+        "Graph",
+        "Curve",
+        "Point"
+      ],
+      "animations": [
+        "FadeIn",
+        "Write"
+      ]
+    },
+    {
+      "title": "Tangent Line and Derivative",
+      "objects": [
+        "TangentLine",
+        "Point",
+        "Text"
+      ],
+      "animations": [
+        "Create",
+        "ShowCreation",
+        "Transform"
+      ]
+    },
+    {
+      "title": "Changing Slope and Instantaneous Rate of Change",
+      "objects": [
+        "Curve",
+        "Point",
+        "TangentLine",
+        "Text"
+      ],
+      "animations": [
+        "Transform",
+        "FadeOut",
+        "ShowCreation"
+      ]
+    }
+  ]
+}

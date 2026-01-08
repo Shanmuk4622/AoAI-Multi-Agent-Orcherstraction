@@ -1,0 +1,52 @@
+{
+  "scenes": [
+    {
+      "title": "Introduction to Derivatives",
+      "objects": [
+        "Graph",
+        "Curve",
+        "Point"
+      ],
+      "animations": [
+        "FadeIn",
+        "Write"
+      ]
+    },
+    {
+      "title": "Tangent Line and Instantaneous Rate of Change",
+      "objects": [
+        "TangentLine",
+        "SlopeIndicator"
+      ],
+      "animations": [
+        "Create",
+        "ShowCreation",
+        "Transform"
+      ]
+    },
+    {
+      "title": "Derivative as a Measure of Steepness",
+      "objects": [
+        "DerivativeGraph",
+        "SteepnessIndicator"
+      ],
+      "animations": [
+        "FadeIn",
+        "Transform",
+        "Scale"
+      ]
+    },
+    {
+      "title": "Conclusion and Summary",
+      "objects": [
+        "Text",
+        "Equation"
+      ],
+      "animations": [
+        "Write",
+        "Transform",
+        "FadeOut"
+      ]
+    }
+  ]
+}

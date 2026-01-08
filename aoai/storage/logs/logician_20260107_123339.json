@@ -1,0 +1,9 @@
+{
+  "concept": "Derivatives",
+  "steps": [
+    "Imagine a curve on a graph, and picture a point moving along this curve, with its speed and direction changing as it goes.",
+    "The derivative of the curve at any point represents the rate of change of the curve at that specific point, which can be thought of as the speed and direction of the moving point.",
+    "Visualize a tangent line to the curve at the point of interest, with the slope of this tangent line representing the derivative, essentially measuring how steep the curve is at that point.",
+    "As the point moves along the curve, the slope of the tangent line changes, giving us the derivative as a function that describes the rate of change at each point on the curve."
+  ]
+}

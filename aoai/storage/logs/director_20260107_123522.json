@@ -1,0 +1,43 @@
+{
+  "scenes": [
+    {
+      "title": "Introduction to Derivative",
+      "objects": [
+        "Text",
+        "Axes",
+        "FunctionGraph"
+      ],
+      "animations": [
+        "FadeIn",
+        "Write",
+        "ShowCreation"
+      ]
+    },
+    {
+      "title": "Visualizing Tangent Line",
+      "objects": [
+        "TangentLine",
+        "Dot",
+        "Text"
+      ],
+      "animations": [
+        "Create",
+        "ShowCreation",
+        "Transform"
+      ]
+    },
+    {
+      "title": "Illustrating Instantaneous Rate of Change",
+      "objects": [
+        "Line",
+        "Arrow",
+        "Text"
+      ],
+      "animations": [
+        "GrowArrow",
+        "Transform",
+        "FadeOut"
+      ]
+    }
+  ]
+}

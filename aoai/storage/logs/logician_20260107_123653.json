@@ -1,0 +1,9 @@
+{
+  "concept": "Derivatives",
+  "steps": [
+    "Imagine a curve on a graph, and a point moving along this curve, the derivative measures how fast the curve is rising or falling at that point.",
+    "Visualize a tangent line to the curve at the point of interest, the slope of this tangent line represents the instantaneous rate of change of the curve.",
+    "As the point moves along the curve, the slope of the tangent line changes, the derivative is a function that describes this changing slope at each point on the curve.",
+    "Think of the derivative as a measure of the curve's steepness at a given point, with higher values indicating a steeper slope and lower values indicating a gentler slope."
+  ]
+}

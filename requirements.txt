@@ -1,0 +1,15 @@
+# AoAI — Agent of Agents Infrastructure
+# Python dependencies
+
+# LLM API clients
+groq>=0.11.0
+google-generativeai
+
+# HTTP requests
+httpx>=0.24.0
+
+# Animation engine
+manim>=0.18.0
+
+# Utilities
+python-dotenv>=1.0.0
