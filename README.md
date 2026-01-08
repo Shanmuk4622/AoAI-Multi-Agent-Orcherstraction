@@ -4,6 +4,7 @@
 
 Generates educational math videos from natural language using orchestrated LLM agents.
 
+**Text** :"cd ..; .\.venv\Scripts\python.exe -m manim -pql .\aoai\storage\outputs\scene.py GeneratedScene"
 ---
 
 ## 🏗 Architecture

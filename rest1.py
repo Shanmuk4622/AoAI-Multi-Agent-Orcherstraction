@@ -11,3 +11,4 @@ class TestAnimation(Scene):
         self.wait(1)
         self.play(Transform(circle, square))
         self.wait(2)
+# "cd ..; .\.venv\Scripts\python.exe -m manim -pql .\aoai\storage\outputs\scene.py GeneratedScene"
